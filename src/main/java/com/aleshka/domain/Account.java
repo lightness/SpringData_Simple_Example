@@ -17,6 +17,14 @@ public class Account
     private Date expiryDate;
 
 
+    public Account () {}
+
+    public Account(String customer, Date expiryDate)
+    {
+        this.customer = customer;
+        this.expiryDate = expiryDate;
+    }
+
     public Long getId()
     {
         return id;

@@ -17,7 +17,6 @@ import javax.sql.DataSource;
 
 
 @Configuration
-@ComponentScan(basePackages = "com.aleshka.service")
 @EnableJpaRepositories(basePackages = "com.aleshka.repository")
 @EnableTransactionManagement
 public class AppConfig
@@ -50,5 +49,11 @@ public class AppConfig
         JpaTransactionManager txManager = new JpaTransactionManager();
         txManager.setEntityManagerFactory(entityManagerFactory());
         return txManager;
+    }
+
+    @Bean
+    public AppListener appListener()
+    {
+        return new AppListener();
     }
 }
