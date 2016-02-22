@@ -1,5 +1,6 @@
 package com.aleshka.config;
 
+import com.aleshka.domain.User;
 import com.aleshka.util.spring.AppListener;
 import com.aleshka.util.spring.data.UsernameAuditorAware;
 import org.springframework.context.annotation.Bean;
@@ -56,7 +57,7 @@ public class AppConfig
     }
 
     @Bean
-    AuditorAware<String> auditorProvider() {
+    AuditorAware<User> auditorProvider() {
         return new UsernameAuditorAware();
     }
 

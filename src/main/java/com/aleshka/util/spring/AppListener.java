@@ -1,7 +1,9 @@
 package com.aleshka.util.spring;
 
 import com.aleshka.domain.Account;
+import com.aleshka.domain.User;
 import com.aleshka.repository.AccountRepository;
+import com.aleshka.repository.UserRepository;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -18,6 +20,11 @@ public class AppListener implements ApplicationListener<ContextRefreshedEvent>
         if (locked) return;
 
         ApplicationContext context = event.getApplicationContext();
+        UserRepository userRepository = (UserRepository) context.getBean("userRepository");
+
+        userRepository.saveAndFlush(new User("user_01"));
+        userRepository.saveAndFlush(new User("user_02"));
+
         AccountRepository accountRepository = (AccountRepository) context.getBean("accountRepository");
 
         accountRepository.saveAndFlush(new Account("Vasiliy", new Date()));

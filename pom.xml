@@ -45,6 +45,12 @@
             <artifactId>spring-data-jpa</artifactId>
             <version>${ver.spring-data}</version>
         </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${ver.joda-time}</version>
+        </dependency>
+
 
     </dependencies>
 
@@ -67,6 +73,7 @@
         <ver.hibernate>5.1.0.Final</ver.hibernate>
         <ver.javaee-api>6.0</ver.javaee-api>
         <ver.hsqldb>2.3.3</ver.hsqldb>
+        <ver.joda-time>2.9.2</ver.joda-time>
     </properties>
 
 </project>

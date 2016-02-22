@@ -1,36 +1,20 @@
 package com.aleshka.domain;
 
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.AbstractAuditable;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.util.Calendar;
 import java.util.Date;
 
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-public class Account
+public class Account extends AbstractAuditable<User, Long>
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     private String customer;
 
     @Temporal(TemporalType.DATE)
     private Date expiryDate;
-
-    @CreatedDate
-    private Calendar creationDate;
-
-    @LastModifiedDate
-    private Calendar modificationDate;
-
-    @CreatedBy
-    private String createdUser;
 
 
     public Account () {}
@@ -39,11 +23,6 @@ public class Account
     {
         this.customer = customer;
         this.expiryDate = expiryDate;
-    }
-
-    public Long getId()
-    {
-        return id;
     }
 
     public String getCustomer()
@@ -66,33 +45,4 @@ public class Account
         this.expiryDate = expiryDate;
     }
 
-    public Calendar getCreationDate()
-    {
-        return creationDate;
-    }
-
-    public void setCreationDate(Calendar creationDate)
-    {
-        this.creationDate = creationDate;
-    }
-
-    public Calendar getModificationDate()
-    {
-        return modificationDate;
-    }
-
-    public void setModificationDate(Calendar modificationDate)
-    {
-        this.modificationDate = modificationDate;
-    }
-
-    public String getCreatedUser()
-    {
-        return createdUser;
-    }
-
-    public void setCreatedUser(String createdUser)
-    {
-        this.createdUser = createdUser;
-    }
 }

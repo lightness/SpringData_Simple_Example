@@ -17,13 +17,20 @@ public class AccountController
 
 
     @RequestMapping(method = RequestMethod.GET)
-    public @ResponseBody Iterable<Account> getUsers()
+    public @ResponseBody Iterable<Account> getAccounts()
     {
         return accountRepository.findAll();
     }
 
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    public @ResponseBody Account getAccount(
+        @PathVariable Long id)
+    {
+        return accountRepository.findOne(id);
+    }
+
     @RequestMapping(value = "{size}/{page}", method = RequestMethod.GET)
-    public @ResponseBody Iterable<Account> getUsersByPage(
+    public @ResponseBody Iterable<Account> getAccountsByPage(
             @PathVariable Integer page,
             @PathVariable Integer size)
     {
@@ -31,13 +38,13 @@ public class AccountController
     }
 
     @RequestMapping(value = "sorted", method = RequestMethod.GET)
-    public @ResponseBody Iterable<Account> getSortedUsers()
+    public @ResponseBody Iterable<Account> getSortedAccounts()
     {
         return accountRepository.findAllByOrderByCustomerAsc();
     }
 
     @RequestMapping(value = "/byCustomer/{customer}", method = RequestMethod.GET)
-    public @ResponseBody Iterable<Account> getUser(
+    public @ResponseBody Iterable<Account> getAccount(
             @PathVariable String customer)
     {
         return accountRepository.findByCustomer(customer);
