@@ -1,5 +1,7 @@
 package com.aleshka.config;
 
+import com.aleshka.config.AppConfig;
+import com.aleshka.config.MvcConfig;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;

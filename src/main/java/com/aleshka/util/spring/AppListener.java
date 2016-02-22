@@ -1,4 +1,4 @@
-package com.aleshka.config;
+package com.aleshka.util.spring;
 
 import com.aleshka.domain.Account;
 import com.aleshka.repository.AccountRepository;

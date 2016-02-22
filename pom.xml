@@ -16,6 +16,11 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${ver.spring}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>${ver.spring}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>

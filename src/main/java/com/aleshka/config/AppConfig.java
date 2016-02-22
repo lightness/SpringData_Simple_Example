@@ -1,8 +1,11 @@
 package com.aleshka.config;
 
+import com.aleshka.util.spring.AppListener;
+import com.aleshka.util.spring.data.UsernameAuditorAware;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.domain.AuditorAware;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
@@ -18,6 +21,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableJpaRepositories(basePackages = "com.aleshka.repository")
+@EnableJpaAuditing
 @EnableTransactionManagement
 public class AppConfig
 {
@@ -49,6 +53,11 @@ public class AppConfig
         JpaTransactionManager txManager = new JpaTransactionManager();
         txManager.setEntityManagerFactory(entityManagerFactory());
         return txManager;
+    }
+
+    @Bean
+    AuditorAware<String> auditorProvider() {
+        return new UsernameAuditorAware();
     }
 
     @Bean
