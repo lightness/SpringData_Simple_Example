@@ -7,13 +7,13 @@ import javax.persistence.*;
 import java.util.Date;
 
 
-@Entity
+@Entity(name = "Account")
 @EntityListeners(AuditingEntityListener.class)
 public class Account extends AbstractAuditable<User, Long>
 {
     private String customer;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date expiryDate;
 
 

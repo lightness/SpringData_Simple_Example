@@ -51,6 +51,13 @@
             <version>${ver.joda-time}</version>
         </dependency>
 
+        <!--for example of custom functionality-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${ver.spring}</version>
+        </dependency>
+
 
     </dependencies>
 
