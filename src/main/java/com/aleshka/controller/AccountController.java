@@ -5,6 +5,7 @@ import com.aleshka.repository.AccountRepository;
 import com.aleshka.repository.specification.AccountSpecs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,6 +50,19 @@ public class AccountController
             @PathVariable String customer)
     {
         return accountRepository.findByCustomer(customer);
+    }
+
+    @RequestMapping(value = "byCustomer/{customer}/{size}/{page}", method = RequestMethod.GET)
+    public @ResponseBody Iterable<Account> getAccountWithPaging(
+            @PathVariable String customer,
+            @PathVariable Integer size,
+            @PathVariable Integer page)
+    {
+        return accountRepository.findByCustomer(customer
+                , new PageRequest(page, size, new Sort(
+                        new Sort.Order(Sort.Direction.ASC, "customer"),
+                        new Sort.Order(Sort.Direction.DESC, "expiryDate")
+                )));
     }
 
     @RequestMapping(value = "search/odd", method = RequestMethod.GET)
