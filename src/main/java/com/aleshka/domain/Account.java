@@ -4,7 +4,7 @@ import org.springframework.data.jpa.domain.AbstractAuditable;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.Calendar;
 
 
 @Entity(name = "Account")
@@ -14,12 +14,12 @@ public class Account extends AbstractAuditable<User, Long>
     private String customer;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date expiryDate;
+    private Calendar expiryDate;
 
 
     public Account () {}
 
-    public Account(String customer, Date expiryDate)
+    public Account(String customer, Calendar expiryDate)
     {
         this.customer = customer;
         this.expiryDate = expiryDate;
@@ -35,14 +35,13 @@ public class Account extends AbstractAuditable<User, Long>
         this.customer = customer;
     }
 
-    public Date getExpiryDate()
+    public Calendar getExpiryDate()
     {
         return expiryDate;
     }
 
-    public void setExpiryDate(Date expiryDate)
+    public void setExpiryDate(Calendar expiryDate)
     {
         this.expiryDate = expiryDate;
     }
-
 }

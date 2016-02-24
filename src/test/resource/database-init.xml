@@ -1,0 +1,8 @@
+<dataset>
+    <account id="1"
+             customer="Alex"
+             expiryDate="2010-12-31 11:05:13" />
+    <account id="2"
+             customer="Ann"
+             expiryDate="2010-11-30 12:15:23" />
+</dataset>

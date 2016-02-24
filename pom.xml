@@ -10,41 +10,49 @@
     <packaging>war</packaging>
 
     <dependencies>
-
+        <!--spring web app skeleton-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${ver.spring}</version>
         </dependency>
+
+        <!--need for using spring data Audit feature-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
             <version>${ver.spring}</version>
         </dependency>
 
+        <!--any entity manager need for spring data-->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>${ver.hibernate}</version>
         </dependency>
 
+        <!--database driver-->
         <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>${ver.hsqldb}</version>
         </dependency>
 
+        <!--need for declaring entities-->
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>${ver.javaee-api}</version>
         </dependency>
 
+        <!--spring data-->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
             <version>${ver.spring-data}</version>
         </dependency>
+
+        <!--need when AbstractAuditable used-->
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
@@ -59,8 +67,46 @@
         </dependency>
 
 
-    </dependencies>
+        <!--####### Tests #######-->
 
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${ver.junit}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${ver.assertj-core}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${ver.spring}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.dbunit</groupId>
+            <artifactId>dbunit</artifactId>
+            <version>${ver.dbunit}</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>junit</artifactId>
+                    <groupId>junit</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.github.springtestdbunit</groupId>
+            <artifactId>spring-test-dbunit</artifactId>
+            <version>${ver.spring-test-dbunit}</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
 
     <build>
         <plugins>
@@ -81,6 +127,10 @@
         <ver.javaee-api>6.0</ver.javaee-api>
         <ver.hsqldb>2.3.3</ver.hsqldb>
         <ver.joda-time>2.9.2</ver.joda-time>
+        <ver.junit>4.12</ver.junit>
+        <ver.assertj-core>3.3.0</ver.assertj-core>
+        <ver.dbunit>2.5.1</ver.dbunit>
+        <ver.spring-test-dbunit>1.2.1</ver.spring-test-dbunit>
     </properties>
 
 </project>
